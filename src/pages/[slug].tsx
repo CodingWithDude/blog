@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { serialize } from 'next-mdx-remote/serialize';
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { MDXRemote } from 'next-mdx-remote';
 import BlogHeaderComponent from '../components/BlogHeaderComponent';
 
 const components = {
@@ -12,9 +12,7 @@ const components = {
 
 export default function Post({
   source,
-}: {
-  source: MDXRemoteSerializeResult<Record<string, unknown>>;
-}): InferGetStaticPropsType<typeof getStaticProps> {
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <div>
       <MDXRemote
@@ -53,7 +51,6 @@ export const getStaticProps: GetStaticProps<Params> = async ({
   params: { slug },
 }: Params) => {
   const post = fs.readFileSync(path.join('src/posts', slug + '.mdx'));
-  console.log(`post: ${post}`);
 
   const { data: metaData, content } = matter(post);
 
