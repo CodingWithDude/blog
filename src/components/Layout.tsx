@@ -4,7 +4,7 @@ import NavComponent from './NavComponent';
 
 const Layout = ({ children }: { children: ReactElement }) => {
   return (
-    <div className="flex flex-col px-4 items-center w-full">
+    <div className="flex bg-stone-900 flex-col px-4 items-center w-full">
       <BackgroundFilter />
       <NavComponent />
 
