@@ -25,17 +25,14 @@ export default function Post({
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const postsDirectory = path.join('src/posts');
-  console.log(`postsDirectory: ${postsDirectory}`);
 
   const files = fs.readdirSync(postsDirectory);
-  console.log(`files: ${files}`);
 
   const paths = files.map((fileName: string) => ({
     params: {
       slug: fileName.replace('.mdx', ''),
     },
   }));
-  console.log(`paths: ${paths}`);
 
   return {
     paths,

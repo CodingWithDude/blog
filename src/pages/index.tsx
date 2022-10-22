@@ -2,29 +2,22 @@ import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import CardComponent from '../components/CardComponent';
 import { Post } from '../models/Post.interface';
-import HeroComponent from '../components/HeroComponent';
+import CardComponent from '../components/CardComponent';
 
 const Home: NextPage = ({
   posts,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  console.log(posts);
   return (
     <div>
-      {posts.map((post: Post, index: number) =>
-        index === 0 ? (
-          <HeroComponent
-            key={index}
-            post={post}
-          />
-        ) : (
+      <div className="flex flex-col gap-6 items-center">
+        {posts.map((post: Post, index: number) => (
           <CardComponent
             key={index}
             post={post}
           />
-        )
-      )}
+        ))}
+      </div>
     </div>
   );
 };

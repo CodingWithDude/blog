@@ -2,23 +2,29 @@ import Image from 'next/image';
 import { FC } from 'react';
 import { Post } from '../models/Post.interface';
 import { Tag } from '../models/Tag';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const CardComponent: FC<{ post: Post }> = ({ post }: { post: Post }) => {
   const { slug, metaData } = post;
-  const { title, dateString, mainImageUrl, excerpt, tags } = metaData;
+  const { title, dateString, description, excerpt, tags } = metaData;
+  const router = useRouter();
 
   return (
-    <div>
-      <h1>{title}</h1>
-
-      <Image
-        src={mainImageUrl}
-        alt="main image"
-        width={200}
-        height={200}
-      />
-      <p>Posted on {dateString}</p>
-    </div>
+    <Link
+      href={slug}
+      passHref
+    >
+      <div className="bg-stone-800 p-6 gap-2 flex flex-col w-full max-w-[584px] rounded-2xl justify-between hover:bg-stone-700 cursor-pointer">
+        <h2 className="text-gray-50 text-lg">{title}</h2>
+        <p className="text-gray-500 text-sm -mt-2">
+          {dateString.slice(0, 3) +
+            ' ' +
+            dateString.split(' ')[1].replace(',', '')}
+        </p>
+        <p className="text-gray-400">{description}</p>
+      </div>
+    </Link>
   );
 };
 
