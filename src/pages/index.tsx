@@ -4,13 +4,15 @@ import path from 'path';
 import matter from 'gray-matter';
 import { Post } from '../models/Post.interface';
 import CardComponent from '../components/CardComponent';
+import HeaderComponent from '../components/HeaderComponent';
 
 const Home: NextPage = ({
   posts,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <div>
-      <div className="flex flex-col gap-6 items-center">
+    <div className="flex flex-col items-center">
+      <HeaderComponent />
+      <div className="flex w-full flex-col gap-6 items-center">
         {posts.map((post: Post, index: number) => (
           <CardComponent
             key={index}
