@@ -11,7 +11,6 @@ const Home: NextPage = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <div className="flex flex-col items-center">
-      <HeaderComponent />
       <div className="flex w-full flex-col gap-6 items-center">
         {posts.map((post: Post, index: number) => (
           <CardComponent
