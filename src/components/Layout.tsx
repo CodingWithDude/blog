@@ -14,7 +14,6 @@ const Layout = ({ children }: { children: ReactElement }) => {
     rootMargin: '0px',
     threshold: 0,
   });
-  console.log(intersection?.isIntersecting);
 
   const GradientBackground = () => {
     return (

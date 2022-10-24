@@ -1,40 +1,30 @@
-import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
-import { Post } from '../models/Post.interface';
-import CardComponent from '../components/CardComponent';
-import HeaderComponent from '../components/HeaderComponent';
+import { allPosts, type Post } from 'contentlayer/generated';
+import { type GetStaticProps, type InferGetStaticPropsType } from 'next';
+import Link from 'next/link';
 
-const Home: NextPage = ({
+export const getStaticProps: GetStaticProps<{
+  posts: Post[];
+}> = () => {
+  return { props: { posts: allPosts } };
+};
+
+export default function PostListPage({
   posts,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <div className="flex flex-col items-center">
-      <div className="flex w-full flex-col gap-6 items-center">
-        {posts.map((post: Post, index: number) => (
-          <CardComponent
-            key={index}
-            post={post}
-          />
-        ))}
-      </div>
+    <div className="flex w-full flex-col gap-6 items-center">
+      {posts.map((post) => (
+        <div
+          className="bg-stone-800 z-[1] p-6 gap-2 flex flex-col w-full max-w-[900px] rounded-2xl justify-between hover:bg-stone-700 cursor-pointer"
+          key={post.slug}
+        >
+          <h2>
+            <Link href={`/${post.slug}`}>
+              <a>{post.title}</a>
+            </Link>
+          </h2>
+        </div>
+      ))}
     </div>
   );
-};
-
-export default Home;
-
-export const getStaticProps: GetStaticProps = async () => {
-  const postsDirectory = path.join('src/posts');
-
-  const files = fs.readdirSync(postsDirectory);
-
-  const blogPosts = files.map((fileName: string) => {
-    const slug = fileName.replace('.mdx', '');
-    const post = fs.readFileSync(path.join('src/posts', fileName));
-    const { data: metaData } = matter(post);
-    return { slug, metaData };
-  });
-  return { props: { posts: blogPosts } };
-};
+}

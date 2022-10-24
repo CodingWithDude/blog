@@ -1,59 +1,34 @@
-import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
-import { serialize } from 'next-mdx-remote/serialize';
-import { MDXRemote } from 'next-mdx-remote';
-import BlogHeaderComponent from '../components/BlogHeaderComponent';
+import { allPosts, type Post } from 'contentlayer/generated';
+import { type GetStaticProps, type InferGetStaticPropsType } from 'next';
+import { useMDXComponent } from 'next-contentlayer/hooks';
 
-const components = {
-  BlogHeaderComponent,
-};
-
-export default function Post({
-  source,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
-  return (
-    <div>
-      <MDXRemote
-        {...source}
-        components={components}
-      />
-    </div>
-  );
-}
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  const postsDirectory = path.join('src/posts');
-
-  const files = fs.readdirSync(postsDirectory);
-
-  const paths = files.map((fileName: string) => ({
-    params: {
-      slug: fileName.replace('.mdx', ''),
-    },
-  }));
-
+export const getStaticPaths = () => {
   return {
-    paths,
+    paths: allPosts.map((post) => ({ params: { slug: post.slug } })),
     fallback: false,
   };
 };
 
-type Params = {
-  [param: string]: any;
+export const getStaticProps: GetStaticProps<{
+  post: Post;
+}> = ({ params }) => {
+  const post = allPosts.find((post) => post.slug === params?.slug);
+
+  if (!post) {
+    return { notFound: true };
+  }
+
+  return { props: { post } };
 };
 
-export const getStaticProps: GetStaticProps<Params> = async ({
-  params: { slug },
-}: Params) => {
-  const post = fs.readFileSync(path.join('src/posts', slug + '.mdx'));
-
-  const { data: metaData, content } = matter(post);
-
-  const mdxSource = await serialize(content, {
-    scope: metaData,
-  });
-
-  return { props: { source: mdxSource } };
-};
+export default function SinglePostPage({
+  post,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
+  const MDXContent = useMDXComponent(post.body.code);
+  return (
+    <div>
+      <h1>{post.title}</h1>
+      <MDXContent />
+    </div>
+  );
+}
