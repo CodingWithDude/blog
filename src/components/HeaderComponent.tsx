@@ -1,10 +1,15 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import NavLinks from './NavLinks';
+import { BsChatSquareDotsFill, BsTwitter } from 'react-icons/bs';
+import { MdOutlineWeb } from 'react-icons/md';
 
 const HeaderComponent = () => {
+  const styledLinkContainer: string =
+    'flex gap-2 md:gap-4 group cursor-pointer text-white items-center';
+  const styledIcon: string =
+    'text-2xl  bg-gradient-to-b from-cyan-500 text-white group-hover:scale-105 to-green-500 ease-in duration-75 p-1  rounded-lg group-hover:bg-gradient-to-b group-hover:from-purple-500 group-hover:to-cyan-500';
   return (
-    <header className="flex flex-col my-48 w-full max-w-[700px] ">
+    <header className="flex flex-col mt-48 w-full max-w-[900px] ">
       <div className="flex gap-6">
         <div className="items-center group hover:scale-105 justify-center flex w-[90px] h-[90px] rounded-full bg-stone-600/30">
           <Link href="/">
@@ -36,7 +41,35 @@ const HeaderComponent = () => {
         about exciting new technologies and building a career as a self taught
         developer.
       </p>
-      <NavLinks />
+      <div className="flex px-2 gap-4 md:gap-6 font-medium">
+        <Link
+          href="https://codingwithdude.com"
+          passHref
+        >
+          <div className={styledLinkContainer}>
+            <BsChatSquareDotsFill className={styledIcon} />
+            <p>Posts</p>
+          </div>
+        </Link>
+        <Link
+          href="https://codingwithdude.com"
+          passHref
+        >
+          <div className={styledLinkContainer}>
+            <BsTwitter className={styledIcon} />
+            <p>Twitter</p>
+          </div>
+        </Link>
+        <Link
+          href="https://codingwithdude.com"
+          passHref
+        >
+          <div className={styledLinkContainer}>
+            <MdOutlineWeb className={`${styledIcon} `} />
+            <p>Portfolio</p>
+          </div>
+        </Link>
+      </div>
     </header>
   );
 };

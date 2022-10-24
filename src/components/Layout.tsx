@@ -1,15 +1,20 @@
-import Image from 'next/image';
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement } from 'react';
 import BackgroundFilter from './BackgroundFilter';
 import NavComponent from './NavComponent';
-import { useWindowScroll } from 'react-use';
+import { useIntersection, useWindowScroll } from 'react-use';
 import HeaderComponent from './HeaderComponent';
+import { useRouter } from 'next/router';
 
 const Layout = ({ children }: { children: ReactElement }) => {
-  const [showNav, setShowNav] = useState(false);
   const { y: yScrollPosition } = useWindowScroll();
-  const navShowYScrollPosition = 422; // pixels
-  console.log(yScrollPosition);
+  const router = useRouter();
+  const intersectionRef = React.useRef(null);
+  const intersection = useIntersection(intersectionRef, {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0,
+  });
+  console.log(intersection?.isIntersecting);
 
   const GradientBackground = () => {
     return (
@@ -26,16 +31,24 @@ const Layout = ({ children }: { children: ReactElement }) => {
     );
   };
   return (
-    <div className="flex bg-[#13171a] flex-col px-4 items-center w-full">
+    <div className="flex bg-[#13171a] flex-col px-6 items-center w-full">
       <BackgroundFilter />
       <GradientBackground />
-      <NavComponent
-        yScrollPosition={yScrollPosition}
-        navShowYScrollPosition={navShowYScrollPosition}
-      />
-      <HeaderComponent />
 
-      <main className="w-full">{children}</main>
+      {/* Nav */}
+      {intersection?.isIntersecting === false ? <NavComponent /> : ''}
+      {router.pathname !== '/' ? <NavComponent /> : ''}
+
+      {/* Header */}
+      {router.pathname === '/' ? (
+        <div ref={intersectionRef}>
+          <HeaderComponent />
+        </div>
+      ) : (
+        ''
+      )}
+      {/* Main */}
+      <main className="w-full mt-48">{children}</main>
     </div>
   );
 };
