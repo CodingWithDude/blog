@@ -9,4 +9,10 @@
   body {
     @apply bg-stone-900 font-poppins w-full h-full;
   }
+  #post h2 {
+    @apply text-gray-100 text-2xl font-medium my-12;
+  }
+  #post p {
+    @apply text-gray-300 text-lg my-6;
+  }
 }

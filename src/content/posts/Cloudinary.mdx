@@ -1,0 +1,35 @@
+---
+title: 'Handle your image and video media like a professional developer with Cloudinary.'
+description: 'With Cloudinary, you can easily upload images and videos to the cloud and automate smart manipulations of those media without installing any other software. Cloudinary then seamlessly delivers your media through a fast content delivery network (CDN), optimized with the industry’s best practices.'
+publishedAt: '2022-10-25'
+---
+
+## Why I Started Using Cloudinary
+
+As an aspiring self taught developer I am always excited to discover tools that make building great projects a bit easier. As I began learning Next.js I learned quickly that you needed to setup the domains that your images would be coming from.
+
+The first thing that I loved was I now only had one domain and one place to store my images and videos.
+
+```js title="next.config.js" {4} showLineNumbers
+const nextConfig = {
+  reactStrictMode: true,
+  swcMinify: true,
+  images: { domains: ['res.cloudinary.com'] },
+};
+```
+
+Cloudinary also allows you to automatically scale down your images right in the url request so the size you need is the size you request.
+
+```js title="GradientBackground.tsx" showLineNumbers /h_500/
+// Tailwindcss Background image
+<div
+  className="h-full transition-all ease-in
+    bg-[url('https://res.cloudinary.com/image/upload/h_500/blog/bg_gradient.png')]
+    bg-top bg-no-repeat opacity-[0.2] will-change-transform"
+></div>
+
+// Image
+<img src="https://res.cloudinary.com/image/upload/h_500/blog/bg_gradient.png" alt="image" />
+```
+
+## Only Scratching the Surface

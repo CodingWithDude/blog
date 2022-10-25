@@ -65,3 +65,7 @@ code[data-line-numbers] .line::before {
   width: 1rem;
   color: rgb(255 255 255 / 0.2);
 }
+
+div[data-rehype-pretty-code-fragment] .word {
+  background-color: rgb(255 255 255 / 0.2);
+}

@@ -30,7 +30,7 @@ const Layout = ({ children }: { children: ReactElement }) => {
     );
   };
   return (
-    <div className="flex bg-[#13171a] flex-col px-6 items-center w-full h-[100vh]">
+    <div className="flex flex-col px-6 items-center w-full">
       <BackgroundFilter />
       <GradientBackground />
 
