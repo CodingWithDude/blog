@@ -1,33 +1,13 @@
-import { defineDocumentType, makeSource } from 'contentlayer/source-files';
-
-const Post = defineDocumentType(() => ({
-  name: 'Post',
-  contentType: 'mdx',
-  // Location of Post source files (relative to `contentDirPath`)
-  filePathPattern: `posts/*.mdx`,
-  fields: {
-    title: {
-      type: 'string',
-      required: true,
-    },
-    description: {
-      type: 'string',
-      required: true,
-    },
-  },
-  computedFields: {
-    slug: {
-      type: 'string',
-      resolve: (post) =>
-        post._raw.sourceFileName
-          // hello-world.mdx => hello-world
-          .replace(/\.mdx$/, ''),
-    },
-  },
-}));
+import { makeSource } from 'contentlayer/source-files';
+import rehypePrettyCode from 'rehype-pretty-code';
+import { Post } from './src/content/definitions/Post';
+import { rehypePrettyCodeOptions } from './src/lib/rehypePrettyCode';
 
 export default makeSource({
   // Location of source files for all defined documentTypes
   contentDirPath: './src/content',
   documentTypes: [Post],
+  mdx: {
+    rehypePlugins: [rehypePrettyCode, rehypePrettyCodeOptions],
+  },
 });

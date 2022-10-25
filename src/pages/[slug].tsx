@@ -1,6 +1,7 @@
 import { allPosts, type Post } from 'contentlayer/generated';
 import { type GetStaticProps, type InferGetStaticPropsType } from 'next';
 import { useMDXComponent } from 'next-contentlayer/hooks';
+import { formatShortDate } from 'src/lib/formatShortDate';
 
 export const getStaticPaths = () => {
   return {
@@ -26,9 +27,12 @@ export default function SinglePostPage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const MDXContent = useMDXComponent(post.body.code);
   return (
-    <div>
-      <h1>{post.title}</h1>
-      <MDXContent />
+    <div className="w-full flex flex-col justify-center items-center">
+      <div className="max-w-[900px]">
+        <h1 className="text-4xl text-gray-100">{post.title}</h1>
+        <p>{formatShortDate(post.publishedAt)}</p>
+        <MDXContent />
+      </div>
     </div>
   );
 }

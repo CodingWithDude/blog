@@ -13,7 +13,7 @@ const NavComponent = () => {
     <nav
       className={`fixed z-[2] flex justify-center ease-in-out transition-all duration-300 w-full p-6 my-2`}
     >
-      <div className="bg-stone-800/75 shadow-md p-4 flex-1 rounded-2xl max-w-[900px] backdrop-blur-sm">
+      <div className="bg-stone-800/75 shadow-md p-4 sm:p-2 flex-1 rounded-2xl max-w-[900px] backdrop-blur-sm">
         <div className="flex grow w-full justify-between items-center gap-3">
           <Link href="/">
             <div className="items-center justify-center flex w-[54px] h-[54px] rounded-full">
