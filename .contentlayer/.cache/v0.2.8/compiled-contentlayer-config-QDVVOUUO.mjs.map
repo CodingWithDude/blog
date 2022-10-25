@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../../contentlayer.config.js"],
-  "sourcesContent": ["import { defineDocumentType, makeSource } from 'contentlayer/source-files';\n\nexport const Post = defineDocumentType(() => ({\n  name: 'Post',\n  filePathPattern: 'posts/*.mdx',\n  computedFields: {\n    slug: {\n      type: 'string',\n      resolve: (post) =>\n        post._raw.sourceFileName\n          // hello-world.mdx => hello-world\n          .replace(/\\.mdx$/, ''),\n    },\n  },\n}));\n\nexport default makeSource({\n  contentDirPath: './src/content',\n  documentTypes: [Post],\n});\n"],
-  "mappings": ";AAAA,SAAS,oBAAoB,kBAAkB;AAExC,IAAM,OAAO,mBAAmB,OAAO;AAAA,EAC5C,MAAM;AAAA,EACN,iBAAiB;AAAA,EACjB,gBAAgB;AAAA,IACd,MAAM;AAAA,MACJ,MAAM;AAAA,MACN,SAAS,CAAC,SACR,KAAK,KAAK,eAEP,QAAQ,UAAU,EAAE;AAAA,IAC3B;AAAA,EACF;AACF,EAAE;AAEF,IAAO,8BAAQ,WAAW;AAAA,EACxB,gBAAgB;AAAA,EAChB,eAAe,CAAC,IAAI;AACtB,CAAC;",
-  "names": []
-}
