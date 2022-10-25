@@ -16,8 +16,8 @@ const NavComponent = () => {
       <div className="bg-stone-800/75 shadow-md p-4 sm:p-2 flex-1 rounded-2xl max-w-[900px] backdrop-blur-sm">
         <div className="flex grow w-full justify-between items-center gap-3">
           <Link href="/">
-            <div className="items-center justify-center flex w-[54px] h-[54px] rounded-full">
-              <div className="items-center cursor-pointer justify-center flex w-[47px] h-[47px] rounded-full bg-gradient-to-b from-cyan-500 to-green-500">
+            <div className="items-center justify-center group flex w-[54px] h-[54px] rounded-full">
+              <div className="items-center cursor-pointer justify-center flex w-[47px] h-[47px] rounded-full bg-gradient-to-b from-cyan-500 to-green-500 group-hover:bg-gradient-to-b group-hover:from-purple-500 group-hover:to-cyan-500 group-hover:duration-1000">
                 <Image
                   src="https://res.cloudinary.com/djjxydn3p/image/upload/v1666480691/profile-white-bg-500px_d9qlcq.png"
                   alt="profile picture"

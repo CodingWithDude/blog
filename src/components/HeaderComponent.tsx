@@ -25,7 +25,7 @@ const HeaderComponent = () => {
           </Link>
         </div>
         <div className="flex flex-col justify-center">
-          <h1 className="text-gray-50 text-4xl">Ryan</h1>
+          <h1 className="text-gray-100 text-4xl">Ryan</h1>
           <Link
             href="https://codingwithdude.com"
             passHref
