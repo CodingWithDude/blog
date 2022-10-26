@@ -29,15 +29,19 @@ export default function SinglePostPage({
   return (
     <div className="w-full flex flex-col justify-center items-center">
       <div className="max-w-[900px]">
-        <h1 className="text-4xl font-medium text-gray-100">{post.title}</h1>
+        <h1 className="text-4xl font-medium px-6 text-gray-100">
+          {post.title}
+        </h1>
 
-        <h3 className="text-gray-300 text-2xl pt-4 ">{post.description}</h3>
-        <p className="text-gray-500 mb-24 pt-1 ">
+        <h3 className="text-gray-300 px-6 text-2xl pt-4 ">
+          {post.description}
+        </h3>
+        <p className="text-gray-500 px-6 mb-24 pt-1 ">
           {formatShortDate(post.publishedAt)}
         </p>
         <div
           id="post"
-          className="pb-24"
+          className="pb-24 w-screen px-6"
         >
           <MDXContent />
         </div>
