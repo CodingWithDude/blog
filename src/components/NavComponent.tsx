@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { useWindowScroll } from 'react-use';
 import Link from 'next/link';
 import { BsChatSquareDotsFill, BsTwitter } from 'react-icons/bs';
 import { MdOutlineWeb } from 'react-icons/md';

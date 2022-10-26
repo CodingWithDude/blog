@@ -47,7 +47,7 @@ const Layout = ({ children }: { children: ReactElement }) => {
         ''
       )}
       {/* Main */}
-      <main className="flex flex-col w-full h-full mt-48">{children}</main>
+      <main className="flex flex-col w-screen h-full mt-48">{children}</main>
     </div>
   );
 };

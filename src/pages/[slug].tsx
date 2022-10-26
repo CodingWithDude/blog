@@ -27,7 +27,7 @@ export default function SinglePostPage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const MDXContent = useMDXComponent(post.body.code);
   return (
-    <div className="w-full flex flex-col justify-center items-center">
+    <div className="w-screen flex flex-col justify-center items-center">
       <div className="max-w-[900px]">
         <h1 className="text-4xl font-medium px-6 text-gray-100">
           {post.title}
@@ -41,7 +41,7 @@ export default function SinglePostPage({
         </p>
         <div
           id="post"
-          className="pb-24 w-screen px-6"
+          className="pb-24 w-screen max-w-[900px] px-6"
         >
           <MDXContent />
         </div>

@@ -4,11 +4,11 @@ description: 'With Cloudinary, you can easily upload images and videos to the cl
 publishedAt: '2022-10-25'
 ---
 
+import ExternalLink from '../../ui/ExternalLink.tsx';
+
 ## Why I Started Using Cloudinary
 
-As an aspiring self taught developer I am always excited to discover tools that make building great projects a bit easier. As I began learning Next.js I learned quickly that you needed to setup the domains that your images would be coming from.
-
-The first thing that I loved was I now only had one domain and one place to store my images and videos.
+As an aspiring self taught developer I am always excited to discover tools that make building great projects a bit easier. The first thing that I loved was I now only had one domain and one service to store my images and videos.
 
 ```js title="next.config.js" {4} showLineNumbers
 const nextConfig = {
@@ -18,7 +18,9 @@ const nextConfig = {
 };
 ```
 
-Cloudinary also allows you to automatically scale down your images right in the url request so the size you need is the size you request.
+<ExternalLink href="https://cloudinary.com/">Cloudinary</ExternalLink> also allows
+you to automatically scale down your images right in the url request so the size
+you need is the size you request.
 
 ```js title="GradientBackground.tsx" showLineNumbers /h_500/
 // Tailwindcss Background image
@@ -33,3 +35,120 @@ Cloudinary also allows you to automatically scale down your images right in the 
 ```
 
 ## Only Scratching the Surface
+
+<div className="bg-gray-100 p-2 rounded-2xl">
+  <img
+    src="https://res.cloudinary.com/djjxydn3p/image/upload/v1666749800/blog/DAM_Banner.png"
+    alt="DAM Banner"
+  />
+</div>
+
+However, Cloudinary doesn't just allow easy access to your content, it empowers you to organize, search, collaborate, manipulate and optimize your media. All developers have access to a generous [free account](https://cloudinary.com/users/register_free) to build side projects and test implementations of the wide feature set Cloudinary provides.
+
+## Transformations
+
+With the Transformations Cookbook in your Cloudinary Dashboard you have access to a host of different image transformations you can apply on the fly just like we did with scaling image size. Here are just few examples of the types of transformations built in.
+
+- ## Face detection-based image cropping
+
+  <div className="flex flex-col items-center sm:flex-row gap-6 pb-6">
+
+  With Cloudinary, cropping an image can be easily done on-the-fly in the
+  cloud. Cloudinary can automatically detect faces' position within an image,
+  and crop a thumbnail based on the detected face.
+
+  <img
+    src="https://res.cloudinary.com/demo/image/upload/w_200,h_200,c_thumb,g_faces/w_200,f_auto,q_auto/couple.jpg"
+    alt="faces"
+    className="rounded-2xl w-[150px] h-[150px]"
+  />
+
+  </div>
+
+  ```js
+  title="SampleImage.tsx" showLineNumbers /w_150,h_150,c_thumb,g_faces/
+  <img
+    src="https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_faces/w_200,f_auto,q_auto/couple.jpg"
+    alt="Faces"
+  />
+  ```
+
+- ## Overlay an image over detected faces
+
+  <div className="flex flex-col items-center sm:flex-row gap-6 pb-6">
+
+  <img
+    src="https://res.cloudinary.com/demo/image/upload/l_badge,g_faces,w_1.0,h_1.0,fl_region_relative/c_pad,ar_1.0/v1603370517/Spain_national_football_team_Euro_2012_final.jpg"
+    alt="faces"
+    className="rounded-2xl w-[150px] h-[150px]"
+  />
+
+  Cloudinary automatically detects and searches for faces within an image. You can overlay another image of your choice on top of those detected faces.
+
+  </div>
+
+  ```js title="SampleImage.tsx" showLineNumbers
+  <img
+    src="https://res.cloudinary.com/demo/image/upload/l_badge,g_faces,w_1.0,h_1.0,fl_region_relative/c_pad,ar_1.0/v1603370517/Spain_national_football_team_Euro_2012_final.jpg"
+    alt="Faces overlay"
+  />
+  ```
+
+- ## Support Short Videos as Profile Video in Your Application
+
+  <div className="flex flex-col items-center sm:flex-row gap-6 pb-6">
+
+  Video profiles are an awesome way to allow your users to inject some personality into their profile in dynamic and creative ways.
+
+  <video
+    autoPlay
+    loop
+    loading="lazy"
+    src="https://res.cloudinary.com/demo/video/upload/g_auto/eo_7/w_250,h_250,c_fill,r_max/q_auto:eco/v1603292662/user_video.mp4"
+    type="video/mp4"
+    alt="Profile video"
+    className="rounded-2xl w-[150px] h-[150px]"
+  />
+
+  </div>
+
+  ```js title="SampleImage.tsx" showLineNumbers
+  <video
+    autoPlay
+    loop
+    loading="lazy"
+    src="https://res.cloudinary.com/demo/video/upload/g_auto/eo_7/w_250,h_250,c_fill,r_max/q_auto:eco/v1603292662/user_video.mp4"
+    type="video/mp4"
+    alt="Profile video"
+    className="rounded-2xl w-[150px] h-[150px]"
+  />
+  ```
+
+- ## Boomerang effect
+
+  <div className="flex flex-col items-center sm:flex-row gap-6">
+    <video
+        autoPlay
+        loop
+        loading="lazy"
+        src="https://res.cloudinary.com/demo/video/upload/l_video:bike_stunt,e_reverse,fl_splice/l_video:bike_stunt,e_accelerate:-50,fl_splice/bike_stunt.mp4"
+        type="video/mp4"
+        alt="Profile video"
+        className="rounded-2xl w-[150px] h-[150px]"
+      />
+      
+    Make a boomerang out of your video by playing it in both directions and modifying its speed.
+
+  </div>
+
+  ```js title="SampleImage.tsx" showLineNumbers /l_video:bike_stunt,e_reverse,fl_splice/
+  <video
+    autoPlay
+    loop
+    loading="lazy"
+    src="https://res.cloudinary.com/demo/video/upload/l_video:bike_stunt,e_reverse,fl_splice/l_video:bike_stunt,e_accelerate:-50,fl_splice/bike_stunt.mp4"
+    type="video/mp4"
+    alt="Profile video"
+    className="rounded-2xl w-[150px] h-[150px]"
+  />
+  ```

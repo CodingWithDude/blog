@@ -10,9 +10,41 @@
     @apply bg-stone-900 font-poppins w-full h-full;
   }
   #post h2 {
-    @apply text-gray-100 text-2xl font-medium my-12;
+    @apply text-gray-100 text-2xl font-medium my-8;
   }
   #post p {
-    @apply text-gray-300 text-lg my-6;
+    @apply text-gray-300 text-lg my-4;
   }
+  #post a {
+    @apply cursor-pointer underline decoration-cyan-500/40;
+  }
+  #post ul {
+    @apply list-disc;
+  }
+  #post li {
+    @apply text-gray-100 mx-6 pb-12 font-medium;
+  }
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #656065 transparent;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  height: 12px;
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #656065;
+  border-radius: 10px;
+  border: 1px solid transparent;
 }
