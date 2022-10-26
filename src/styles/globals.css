@@ -12,17 +12,20 @@
   #post h2 {
     @apply text-gray-100 text-2xl font-medium my-8;
   }
+  #post h3 {
+    @apply text-gray-100 text-2xl my-6;
+  }
   #post p {
     @apply text-gray-300 text-lg my-4;
   }
   #post a {
-    @apply cursor-pointer underline decoration-cyan-500/40;
+    @apply cursor-pointer underline decoration-purple-500 hover:decoration-green-500;
   }
   #post ul {
     @apply list-disc;
   }
   #post li {
-    @apply text-gray-100 mx-6 pb-12 font-medium;
+    @apply text-gray-100 mx-6 font-medium;
   }
 }
 

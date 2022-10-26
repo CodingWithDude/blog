@@ -36,9 +36,9 @@ export default function SinglePostPage({
         <h3 className="text-gray-300 px-6 text-2xl pt-4 ">
           {post.description}
         </h3>
-        <p className="text-gray-500 px-6 mb-24 pt-1 ">
-          {formatShortDate(post.publishedAt)}
-        </p>
+        <div className="flex items-center gap-4 px-6 mb-24 pt-1">
+          <p className="text-gray-500">{formatShortDate(post.publishedAt)}</p>
+        </div>
         <div
           id="post"
           className="pb-24 w-screen max-w-[900px] px-6"

@@ -4,6 +4,7 @@ import NavComponent from './NavComponent';
 import { useIntersection, useWindowScroll } from 'react-use';
 import HeaderComponent from './HeaderComponent';
 import { useRouter } from 'next/router';
+import Footer from './Footer';
 
 const Layout = ({ children }: { children: ReactElement }) => {
   const { y: yScrollPosition } = useWindowScroll();
@@ -48,6 +49,7 @@ const Layout = ({ children }: { children: ReactElement }) => {
       )}
       {/* Main */}
       <main className="flex flex-col w-screen h-full mt-48">{children}</main>
+      <Footer />
     </div>
   );
 };
