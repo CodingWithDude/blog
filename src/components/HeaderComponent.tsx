@@ -43,7 +43,7 @@ const HeaderComponent = () => {
       </p>
       <div className="flex px-2 gap-4 md:gap-6 font-medium">
         <Link
-          href="https://codingwithdude.com"
+          href="/posts"
           passHref
         >
           <div className={styledLinkContainer}>
@@ -52,7 +52,7 @@ const HeaderComponent = () => {
           </div>
         </Link>
         <Link
-          href="https://codingwithdude.com"
+          href="https://twitter.com/codingwithdude"
           passHref
         >
           <div className={styledLinkContainer}>

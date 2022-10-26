@@ -9,7 +9,7 @@ export const getStaticProps: GetStaticProps<{
   return { props: { posts: allPosts } };
 };
 
-export default function PostListPage({
+export default function Posts({
   posts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
@@ -17,7 +17,7 @@ export default function PostListPage({
       {posts.map((post) => (
         <Link
           key={post.slug}
-          href={post.slug.toLowerCase()}
+          href={post.slug}
         >
           <div className="bg-stone-800 p-6 flex flex-col w-full max-w-[900px] rounded-2xl justify-between hover:bg-stone-700 cursor-pointer">
             <h2 className="text-gray-100 text-2xl font-medium">{post.title}</h2>
