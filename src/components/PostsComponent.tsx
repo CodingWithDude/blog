@@ -22,7 +22,7 @@ const PostsComponent = ({
 
   return (
     <div className="flex w-full flex-col px-6 gap-6 items-center">
-      {posts.reverse().map((post) => (
+      {[...posts].reverse().map((post) => (
         <Link
           key={post.slug}
           href={post.slug}
