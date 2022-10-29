@@ -25,7 +25,7 @@ const Layout = ({ children }: { children: ReactElement }) => {
     );
   };
   return (
-    <div className="flex flex-col px-6 items-center w-full">
+    <div className="flex flex-col px-6 overflow-hidden items-center w-full">
       <BackgroundFilter />
       <GradientBackground />
 
@@ -42,9 +42,7 @@ const Layout = ({ children }: { children: ReactElement }) => {
         ''
       )}
       {/* Main */}
-      <main className="flex flex-col w-screen h-screen mb-[1000px]  mt-48">
-        {children}
-      </main>
+      <main className="flex flex-col w-screen h-full mt-48">{children}</main>
       <Footer />
     </div>
   );

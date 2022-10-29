@@ -16,7 +16,7 @@ const Footer = () => {
           <span className="text-green-500 group-hover:text-purple-500">{`Dude/>`}</span>
         </div>
       </a> */}
-      <div className="flex w-full items-center justify-center gap-6 pt-2 md:hidden">
+      <div className="flex w-full items-center justify-center gap-6 pt-2">
         {socialLinkList.map((item, index) => (
           <a
             className="social-icons"

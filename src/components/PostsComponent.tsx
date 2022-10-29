@@ -21,7 +21,7 @@ const PostsComponent = ({
   const { height } = useWindowSize();
 
   return (
-    <div className="flex  w-full flex-col px-6 gap-6 items-center">
+    <div className="flex w-full flex-col px-6 gap-6 items-center">
       {posts.reverse().map((post) => (
         <Link
           key={post.slug}

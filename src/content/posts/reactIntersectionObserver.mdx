@@ -19,7 +19,6 @@ export const InViewComponent = () => {
   return (
     <div className="py-6">
       <InView
-        threshold={0}
         rootMargin={`-${height / 2 - 50}px 0px -${height / 2 - 50}px 0px`}
       >
         {({ inView, ref }) => (
@@ -53,12 +52,141 @@ In the example below you can see as you scroll the page and center the element i
 
 ### Packages used in this example
 
-For this project we will be using <ExternalLink href="https://github.com/thebuilder/react-intersection-observer">react-intersection-observer</ExternalLink>. for tracking if the element is in view and react-use for finding and updating the current screen height. React-use has a whole range of amazing custom useHooks, check out more on their <ExternalLink href="https://github.com/streamich/react-use">github page</ExternalLink>.
+For this project we will be using <ExternalLink href="https://github.com/thebuilder/react-intersection-observer">react-intersection-observer</ExternalLink>. for tracking if the element is in view and react-use for finding and updating the current screen height. React-use has a whole range of amazing custom useHooks, check out more on their <ExternalLink href="https://github.com/streamich/react-use">github page</ExternalLink>. I will also be using <ExternalLink href="https://tailwindcss.com/docs/installation">tailwindcss</ExternalLink> for styling. I recommend if your comfortable with vanilla css that you give tailwind a try.
 
-```bash title="terminal"
-npx create-next-app@latest
+```bash title="Terminal"
+npm install react-intersection-observer react-use --save
 # or
-yarn create next-app
-# or
-pnpm create next-app
+yarn add react-intersection-observer react-use
 ```
+
+### Setup project
+
+Lets first get a new tsx/jsx file called IntersectionExample. We will also import the packages for the component.
+
+```tsx title="IntersectionExample.tsx" showLineNumbers
+import { InView } from 'react-intersection-observer';
+import { useWindowSize } from 'react-use';
+
+export const IntersectionExample = () => {
+  return <div></div>;
+};
+```
+
+Next lets add in the `<InView>` component. Inside the component we will pass a function with props of inView, ref, and entry. The function gets called whenever the state changes and updates the boolean value of `inView`. The ref prop is going on the element we want to track and the entry prop, which is optional, provides access to all of the details of the intersection if you need it.
+
+```tsx title="IntersectionExample.tsx" showLineNumbers {7-13}
+import { InView } from 'react-intersection-observer';
+import { useWindowSize } from 'react-use';
+
+export const IntersectionExample = () => {
+  return (
+    <div>
+      <InView>
+        {({ inView, ref, entry }) => (
+          <div ref={ref}>
+            <h2>{`Element is in view: ${inView}`}</h2>
+          </div>
+        )}
+      </InView>
+    </div>
+  );
+};
+```
+
+For the example we are building we want the effects to be triggered when the element is in the middle of the screen horizontally. We can achieve this by finding the height of the screen and using rootMargin. To find the screen height and ensure it stays updated through device and orientation changes we will be using useWindowSize from react-use.
+
+useWindowSize() is an object that contains the width and height of the window, we only need the height so we will use destructing to access only height.
+
+```tsx title="IntersectionExample.tsx" showLineNumbers {5}
+import { InView } from 'react-intersection-observer';
+import { useWindowSize } from 'react-use';
+
+export const IntersectionExample = () => {
+  const { height } = useWindowSize();
+  return (
+    <div>
+      <InView>
+        {({ inView, ref, entry }) => (
+          <div ref={ref}>
+            <h2>{`Element is in view: ${inView}`}</h2>
+          </div>
+        )}
+      </InView>
+    </div>
+  );
+};
+```
+
+### rootMargin option argument
+
+`<InView>` can take several optional arguments including one called rootMargin. From the documentation is 'Margin around the root. Can have values similar to the CSS margin property, e.g. "10px 20px 30px 40px" (top, right, bottom, left).'
+
+Now we can use -(height / 2) to get a margin for the top and bottom of the screen. We can create a space between the top and bottom of the screen of by subtracting 50px from top and bottom for the range that the effect will trigger. So on a screen height of 800px we would take -(800 / 2 - 50) for a total of -350px margin from the top and bottom of the screen leaving us 100px in the center for the effect to trigger.
+
+```tsx title="IntersectionExample.tsx" showLineNumbers {9}
+import { InView } from 'react-intersection-observer';
+import { useWindowSize } from 'react-use';
+
+export const IntersectionExample = () => {
+  const { height } = useWindowSize();
+  return (
+    <div>
+      <InView
+        rootMargin={`-${height / 2 - 50}px 0px -${height / 2 - 50}px 0px`}
+      >
+        {({ inView, ref, entry }) => (
+          <div ref={ref}>
+            <h2>{`Element is in view: ${inView}`}</h2>
+          </div>
+        )}
+      </InView>
+    </div>
+  );
+};
+```
+
+At this point all of the work to trigger your effect when your target element is in the 100px range of the center of the screen is done! All that is left to do is to style your element. As noted I am using tailwindcss here but feel free to use whichever css approach you like. I would recommend using ternary operator `condition ? true : false` that can toggle your styles.
+
+```tsx title="IntersectionExample.tsx" showLineNumbers {16-18, 23}
+import { InView } from 'react-intersection-observer';
+import { useWindowSize } from 'react-use';
+
+export const IntersectionExample = () => {
+  const { height } = useWindowSize();
+  return (
+    <div className="py-6">
+      <InView
+        rootMargin={`-${height / 2 - 50}px 0px -${height / 2 - 50}px 0px`}
+      >
+        {({ inView, ref }) => (
+          <div className="flex justify-center">
+            <div
+              ref={ref}
+              className={`flex w-full max-w-[300px] rounded-2xl duration-700 ease-in ${
+                inView
+                  ? 'bg-gradient-to-b from-cyan-500 to-green-500'
+                  : 'bg-transparent'
+              }`}
+            >
+              <div className="bg-stone-800 p-6 ease-in duration-300 m-[3px] flex flex-col w-full max-w-[300px] rounded-2xl items-center justify-between hover:bg-stone-700 cursor-pointer ">
+                <h2 className="text-gray-100 text-2xl font-medium">
+                  {inView ? 'In Range' : 'Not In Range'}
+                </h2>
+              </div>
+            </div>
+          </div>
+        )}
+      </InView>
+    </div>
+  );
+};
+```
+
+## Final result
+
+<InViewComponent />
+
+Check out more information and examples about this package on their <ExternalLink href="https://github.com/thebuilder/react-intersection-observer">github profile</ExternalLink>
+
+Happy coding!
