@@ -2,7 +2,7 @@ import { socialLinkList } from '../utils/constants';
 
 const Footer = () => {
   return (
-    <footer className="flex bottom-0 w-full flex-col items-center justify-center gap-2 pt-32 pb-4 text-gray-100">
+    <footer className="flex bottom-0 w-full flex-col items-center justify-center gap-2 pt-52 pb-4 text-gray-100">
       <a href="https://github.com/CodingWithDude">
         <span className="text-xs">Built by Ryan Austin</span>
       </a>
