@@ -1,0 +1,64 @@
+---
+title: 'Create amazing intersection base scroll effects with react-intersection-observer.'
+description: 'The react-intersection-observer library clocks in at  800,000+ weekly downloads. Only 1.6kB bundle size and written in TypeScript. This package provides easy, optimized use of the intersection observer.'
+publishedAt: '2022-10-28'
+---
+
+import ExternalLink from '../../ui/ExternalLink.tsx';
+import { InView } from 'react-intersection-observer';
+import { useWindowSize } from 'react-use';
+
+## React Intersection Observer
+
+This awesome package makes implementing the <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API">Intersection Observer API</ExternalLink> easy. Contains Hooks, render props, and plain children implementation.
+
+You can checkout the Storybook Demo <ExternalLink href="https://react-intersection-observer.vercel.app/">https://react-intersection-observer.vercel.app</ExternalLink>
+
+export const InViewComponent = () => {
+  const { height } = useWindowSize();
+  return (
+    <div className="py-6">
+      <InView
+        threshold={0}
+        rootMargin={`-${height / 2 - 50}px 0px -${height / 2 - 50}px 0px`}
+      >
+        {({ inView, ref }) => (
+          <div className="flex justify-center">
+            <div
+              ref={ref}
+              className={`flex w-full max-w-[300px] rounded-2xl duration-700 ease-in ${
+                inView
+                  ? 'bg-gradient-to-b from-cyan-500 to-green-500'
+                  : 'bg-transparent'
+              }`}
+            >
+              <div className="bg-stone-800 p-6 ease-in duration-300 m-[3px] flex flex-col w-full max-w-[300px] rounded-2xl items-center justify-between hover:bg-stone-700 cursor-pointer ">
+                <h2 className="text-gray-100 text-2xl font-medium">
+                  {inView ? 'In Range' : 'Not In Range'}
+                </h2>
+              </div>
+            </div>
+          </div>
+        )}
+      </InView>
+    </div>
+  );
+};
+
+### Demonstration
+
+In the example below you can see as you scroll the page and center the element in the window the effect is triggered. Once you setup the options for the target element, you can apply any styling, effects, and animations you want.
+
+<InViewComponent />
+
+### Packages used in this example
+
+For this project we will be using <ExternalLink href="https://github.com/thebuilder/react-intersection-observer">react-intersection-observer</ExternalLink>. for tracking if the element is in view and react-use for finding and updating the current screen height. React-use has a whole range of amazing custom useHooks, check out more on their <ExternalLink href="https://github.com/streamich/react-use">github page</ExternalLink>.
+
+```bash title="terminal"
+npx create-next-app@latest
+# or
+yarn create next-app
+# or
+pnpm create next-app
+```

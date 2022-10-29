@@ -10,13 +10,13 @@
     @apply bg-stone-900 font-poppins w-full h-full;
   }
   #post h2 {
-    @apply text-gray-100 text-2xl font-medium my-8;
+    @apply text-gray-50 text-3xl font-medium my-8;
   }
   #post h3 {
-    @apply text-gray-100 text-2xl my-6;
+    @apply text-gray-50 font-medium text-2xl my-6;
   }
   #post p {
-    @apply text-gray-300 text-lg my-4;
+    @apply text-gray-300  text-lg my-4;
   }
   #post a {
     @apply cursor-pointer underline decoration-purple-500 hover:decoration-green-500;

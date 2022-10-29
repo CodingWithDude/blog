@@ -127,17 +127,17 @@ With the Transformations Cookbook in your Cloudinary Dashboard you have access t
 - ### Boomerang effect
 
     <div className="flex flex-col items-center sm:flex-row gap-6">
-      <video
-          autoPlay
-          loop
-          loading="lazy"
-          src="https://res.cloudinary.com/demo/video/upload/l_video:bike_stunt,e_reverse,fl_splice/l_video:bike_stunt,e_accelerate:-50,fl_splice/bike_stunt.mp4"
-          type="video/mp4"
-          alt="Profile video"
-          className="rounded-2xl w-[150px] h-[150px]"
-        />
+    <video
+        autoPlay
+        loop
+        loading="lazy"
+        src="https://res.cloudinary.com/demo/video/upload/l_video:bike_stunt,e_reverse,fl_splice/l_video:bike_stunt,e_accelerate:-50,fl_splice/bike_stunt.mp4"
+        type="video/mp4"
+        alt="Profile video"
+        className="rounded-2xl w-[150px] h-[150px]"
+      />
 
-        Make a boomerang out of your video by playing it in both directions and modifying its speed.
+      Make a boomerang out of your video by playing it in both directions and modifying its speed.
 
   </div>
 
@@ -146,8 +146,11 @@ With the Transformations Cookbook in your Cloudinary Dashboard you have access t
   autoPlay
   loop
   loading="lazy"
-  src="https://res.cloudinary.com/demo/video/upload/l_video:bike_stunt,e_reverse,fl_splice/l_video:bike_stunt,e_accelerate:-50,fl_splice/bike_stunt.mp4"
-  type="video/mp4"
+  <source src="https://res.cloudinary.com/demo/video/upload/l_video:bike_stunt,e_reverse,fl_splice/l_video:bike_stunt,e_accelerate:-50,fl_splice/bike_stunt.mp4"
+  type="video/mp4">
+  <source src="https://res.cloudinary.com/demo/video/upload/l_video:bike_stunt,e_reverse,fl_splice/l_video:bike_stunt,e_accelerate:-50,fl_splice/bike_stunt.ogg"
+  type="video/ogv">
+
   alt="Profile video"
   className="rounded-2xl w-[150px] h-[150px]"
 />

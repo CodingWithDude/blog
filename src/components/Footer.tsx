@@ -6,7 +6,7 @@ const Footer = () => {
       <a href="https://github.com/CodingWithDude">
         <span className="text-xs">Built by Ryan Austin</span>
       </a>
-      <a
+      {/* <a
         href="https://github.com/CodingWithDude"
         className="cursor-pointer "
       >
@@ -15,7 +15,7 @@ const Footer = () => {
           <span className="text-gray-300 ">With</span>
           <span className="text-green-500 group-hover:text-purple-500">{`Dude/>`}</span>
         </div>
-      </a>
+      </a> */}
       <div className="flex w-full items-center justify-center gap-6 pt-2 md:hidden">
         {socialLinkList.map((item, index) => (
           <a
