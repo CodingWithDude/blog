@@ -30,7 +30,7 @@ const PostsComponent = ({
           <div>
             <InView
               threshold={0}
-              rootMargin={`-${height / 2 - 50}px 0px -${height / 2 - 50}px 0px`}
+              rootMargin={`-${height / 2 - 15}px 0px -${height / 2 - 15}px 0px`}
             >
               {({ inView, ref }) => (
                 <div
@@ -39,7 +39,7 @@ const PostsComponent = ({
                     inView ? 'bg-gradient-to-b from-cyan-500 to-green-500' : ''
                   }`}
                 >
-                  <div className="bg-stone-800 p-6 ease-in duration-300 m-[2px] flex flex-col w-full max-w-[900px] rounded-2xl justify-between hover:bg-stone-700 cursor-pointer ">
+                  <div className="bg-stone-800 z-[1] p-6 ease-in duration-300 m-[3px] flex flex-col w-full max-w-[900px] rounded-2xl justify-between hover:bg-stone-700 cursor-pointer ">
                     <h2 className="text-gray-100 text-2xl font-medium">
                       {post.title}
                     </h2>

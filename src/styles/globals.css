@@ -7,7 +7,7 @@
 
 @layer base {
   body {
-    @apply bg-stone-900 font-poppins w-full h-full;
+    @apply bg-[#1A1918] font-poppins w-full h-full;
   }
   #post h2 {
     @apply text-gray-50 text-3xl font-medium my-8;
@@ -29,6 +29,25 @@
   }
   #post li {
     @apply text-gray-100 mx-6 font-medium;
+  }
+}
+
+@layer components {
+  .social-icons {
+    @apply h-5 w-5 text-gray-400 transition ease-linear duration-300 hover:text-gray-200  md:hover:scale-110 xl:text-xl;
+  }
+}
+
+.fade-in-social-links {
+  animation: fadeInSocialLinks 500ms ease-in 1200ms both;
+}
+
+@keyframes fadeInSocialLinks {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
