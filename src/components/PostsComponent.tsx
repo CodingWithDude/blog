@@ -35,18 +35,20 @@ const PostsComponent = ({
               {({ inView, ref }) => (
                 <div
                   ref={ref}
-                  className={`flex rounded-2xl bg-transparent duration-300 ${
+                  className={`flex rounded-2xl duration-300 ${
                     inView ? 'bg-gradient-to-b from-cyan-500 to-green-500' : ''
                   }`}
                 >
-                  <div className="bg-stone-800 z-[1] p-6 ease-in duration-300 m-[3px] flex flex-col w-full max-w-[900px] rounded-2xl justify-between hover:bg-stone-700 cursor-pointer ">
-                    <h2 className="text-gray-100 text-2xl font-medium">
+                  <div className="bg-stone-800 z-[1] p-6 ease-in duration-300 m-[3px] flex flex-col w-full max-w-[1100px] rounded-2xl justify-between hover:bg-stone-700 cursor-pointer ">
+                    <h2 className="text-gray-100 text-2xl lg:text-4xl font-medium">
                       {post.title}
                     </h2>
-                    <p className="text-gray-400 text-xs py-1">
+                    <p className="text-gray-400 text-xs lg:text-base py-1">
                       {formatShortDate(post.publishedAt)}
                     </p>
-                    <p className="text-gray-300">{post.description}</p>
+                    <p className="text-gray-300 lg:text-2xl">
+                      {post.description}
+                    </p>
                   </div>
                 </div>
               )}

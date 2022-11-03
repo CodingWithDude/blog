@@ -12,7 +12,7 @@ const HeaderComponent = () => {
   const styledIcon: string =
     'text-2xl md:text-3xl bg-gradient-to-b from-cyan-500 text-white group-hover:scale-105 to-green-500 ease-in duration-75 p-1  rounded-lg group-hover:bg-gradient-to-b group-hover:from-purple-500 group-hover:to-cyan-500';
   return (
-    <header className="flex flex-col mt-48 w-full max-w-[900px] ">
+    <header className="flex flex-col mt-48 w-full max-w-[1100px] ">
       <div className="flex gap-6">
         <div className="items-center group hover:scale-105 justify-center flex w-[90px] h-[90px] md:w-[130px] md:h-[130px] rounded-full bg-stone-600/30">
           <Link href="/">
@@ -42,7 +42,7 @@ const HeaderComponent = () => {
           </Link>
         </div>
       </div>
-      <p className="mt-6 text-gray-100 mb-8 md:text-3xl">
+      <p className="mt-6 text-gray-100 mb-8 lg:text-4xl">
         Welcome to my digital playground where I share what I&apos;m learning
         about exciting new technologies and building a career as a self taught
         developer.

@@ -10,9 +10,9 @@ const NavComponent = () => {
     'text-2xl  bg-gradient-to-b from-cyan-500 text-white group-hover:scale-105 to-green-500 ease-in duration-75 p-1  rounded-lg group-hover:bg-gradient-to-b group-hover:from-purple-500 group-hover:to-cyan-500';
   return (
     <nav
-      className={`fixed z-[2] flex justify-center ease-in-out transition-all max-w-[900px] duration-300 w-full p-6 my-2`}
+      className={`fixed z-[2] flex justify-center ease-in-out transition-all max-w-[1100px] duration-300 w-full p-6 my-2`}
     >
-      <div className="bg-stone-800/75 shadow-md p-4 sm:p-2 flex-1 rounded-2xl max-w-[900px] backdrop-blur-sm">
+      <div className="bg-stone-800/75 shadow-md p-4 sm:p-2 flex-1 rounded-2xl max-w-[1100px] backdrop-blur-sm">
         <div className="flex grow w-full justify-between items-center gap-3">
           <Link href="/">
             <div className="items-center justify-center group flex w-[54px] h-[54px] rounded-full">

@@ -28,7 +28,7 @@ export default function SinglePostPage({
   const MDXContent = useMDXComponent(post.body.code);
   return (
     <div className="w-screen flex flex-col justify-center items-center">
-      <div className="max-w-[900px]">
+      <div className="max-w-[1100px]">
         <h1 className="text-4xl font-medium px-6 text-gray-100">
           {post.title}
         </h1>
@@ -41,7 +41,7 @@ export default function SinglePostPage({
         </div>
         <div
           id="post"
-          className="pb-24 w-screen max-w-[900px] px-6"
+          className="pb-24 w-screen max-w-[1100px] px-6"
         >
           <MDXContent />
         </div>
