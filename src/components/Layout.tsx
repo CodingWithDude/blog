@@ -1,5 +1,4 @@
 import React, { ReactElement } from 'react';
-import BackgroundFilter from './BackgroundFilter';
 import NavComponent from './NavComponent';
 import { useIntersection, useWindowScroll } from 'react-use';
 import HeaderComponent from './HeaderComponent';
@@ -35,8 +34,7 @@ const Layout = ({ children }: { children: ReactElement }) => {
 
   return (
     <div className="flex flex-col px-6 overflow-hidden items-center w-full">
-      {/* <BackgroundFilter /> */}
-      <GradientBackground />
+      {/* <GradientBackground /> */}
 
       {/* Nav */}
       {intersection?.isIntersecting === false ? <NavComponent /> : ''}

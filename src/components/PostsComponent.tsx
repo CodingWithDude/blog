@@ -40,13 +40,13 @@ const PostsComponent = ({
                   }`}
                 >
                   <div className="bg-stone-800 z-[1] p-6 ease-in duration-300 m-[3px] flex flex-col w-full max-w-[1100px] rounded-2xl justify-between hover:bg-stone-700 cursor-pointer ">
-                    <h2 className="text-gray-100 text-2xl lg:text-4xl font-medium">
+                    <h2 className="text-gray-100 text-2xl font-medium">
                       {post.title}
                     </h2>
                     <p className="text-gray-400 text-xs lg:text-base py-1">
                       {formatShortDate(post.publishedAt)}
                     </p>
-                    <p className="text-gray-300 lg:text-2xl">
+                    <p className="text-gray-300 lg:text-xl">
                       {post.description}
                     </p>
                   </div>
